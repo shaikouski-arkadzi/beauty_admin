@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, useCallback } from "react";
 
-import AppointmentItem from "../appointmentItem.tsx/AppointmentItem";
+import AppointmentItem from "../appointmentItem/AppointmentItem";
 import Spinner from "../spinner/Spinner";
 import Error from "../error/Error";
 import CancelModal from "../modal/CancelModal";
@@ -12,6 +12,7 @@ function AppointmentList() {
 		activeAppointments,
 		getActiveAppointments,
 		appointmentLoadingStatus,
+		calendarDate
 	} = useContext(AppointmentContext);
 
 	const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,7 @@ function AppointmentList() {
 
 	useEffect(() => {
 		getActiveAppointments();
-	}, []);
+	}, [calendarDate]);
 
 	const handleOpenModal = useCallback((id: number)=>{
 		setIsOpen(true);
